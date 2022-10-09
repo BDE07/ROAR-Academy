@@ -73,7 +73,8 @@ model.fit(trainingX, trainingY, epochs=500, batch_size=10, verbose=1, validation
 # score = model.evaluate(testingX, testingY, verbose=0)
 score = 0
 for i in range(100):
-    estimate = model.predict_classes(np.array([testingX[i,:]]))
+    predict_x=model.predict(np.array([testingX[i,:]])) 
+    estimate=np.argmax(predict_x,axis=1)
 
     if testingY[i,estimate] == 1:
         score = score  + 1
